@@ -42,3 +42,22 @@ class UserChangeForm(forms.ModelForm):
             'last_login'
         )
 
+class UserLoginForm(forms.Form):
+    phone_number = forms.CharField(
+        max_length=11,
+        min_length=11,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control'
+            }
+        ),
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control'
+            }
+        )
+    )
+
+
