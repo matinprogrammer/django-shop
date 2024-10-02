@@ -1,5 +1,6 @@
 {% url 'accounts:user_login' as user_login_url %}
 {% url 'accounts:user_logout' as user_logout_url %}
+{% url 'accounts:user_register' as user_register_url %}
 {% url 'home:home' as home_url %}
 
 <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
@@ -27,6 +28,14 @@
                                 href="{{ user_login_url }}"
                         >
                             Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                                class="nav-link {% if request.path == user_register_url %}active{% endif %}"
+                                href="{{ user_register_url }}"
+                        >
+                            Register
                         </a>
                     </li>
                 {% endif %}

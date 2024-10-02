@@ -38,4 +38,12 @@ class User(AbstractBaseUser):
     def __str__(self):
         return str(self.phone_number)
 
+class OtpCode(models.Model):
+    phone_number = models.CharField(max_length=11, validators=[MinLengthValidator(11)])
+    code = models.PositiveSmallIntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.phone_number} - {self.code} - {self.created}"
+
 
