@@ -1,5 +1,6 @@
 {% url 'accounts:user_login' as user_login_url %}
-{% url 'home:home' as home %}
+{% url 'accounts:user_logout' as user_logout_url %}
+{% url 'home:home' as home_url %}
 
 <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
@@ -7,20 +8,28 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a
-                        class="nav-link {% if request.path == home %}active{% endif %}"
-                        href="{{ home }}"
+                            class="nav-link {% if request.path == home_url %}active{% endif %}"
+                            href="{{ home_url }}"
                     >
                         Home
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a
-                        class="nav-link {% if request.path == user_login_url %}active{% endif %}"
-                        href="{{ user_login_url }}"
-                    >
-                        Login
-                    </a>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ user_logout_url }}">
+                            Logout
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a
+                                class="nav-link {% if request.path == user_login_url %}active{% endif %}"
+                                href="{{ user_login_url }}"
+                        >
+                            Login
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

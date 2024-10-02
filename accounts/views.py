@@ -30,4 +30,10 @@ class UserLoginView(View):
             'form': form,
         })
 
+class UserLogoutView(View):
+    def get(self, request):
+        logout(request)
+        messages.success(request, 'You are now logged out', 'success')
+        return redirect('home:home')
+
 
