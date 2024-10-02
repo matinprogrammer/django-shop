@@ -12,8 +12,6 @@ from utils import send_otp_code
 
 USER_REGISTER_SESSION_KEY = 'user_registration_info'
 
-# TODO: clear  code
-# TODO: write test
 class UserLoginView(View):
     template_name = 'accounts/user_login.html'
     form_class = UserLoginForm
@@ -61,7 +59,6 @@ class UserRegisterView(View):
         if form.is_valid():
             random_code = randint(100000, 999999)
             # send_otp_code(phone_number=form.cleaned_data['phone_number'], code=random_code)
-            print(random_code)
             OtpCode.objects.create(
                 phone_number=form.cleaned_data['phone_number'],
                 code=random_code,
@@ -91,7 +88,6 @@ class UserRegisterVerifyCodeView(View):
             'form': form,
         })
 
-    # TODO: overwrite save method of user
     def post(self, request):
         form = self.form_class(request.POST)
         if form.is_valid():
