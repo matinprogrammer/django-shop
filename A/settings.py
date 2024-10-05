@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # local apps
     'accounts.apps.AccountsConfig',
     'home.apps.HomeConfig',
+    'category.apps.CategoryConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [
