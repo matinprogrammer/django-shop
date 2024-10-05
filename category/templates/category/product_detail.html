@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+    <div class="d-flex p-4">
+        <div class="w-25 me-5">
+            <img class="w-100" src="{{ product.picture.url }}" alt="{{ product.picture }}">
+        </div>
+        <div class="w-75">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p>price: {{ product.price }}</p>
+            <a class="btn btn-primary">Buy</a>
+        </div>
+
+    </div>
+{% endblock %}
