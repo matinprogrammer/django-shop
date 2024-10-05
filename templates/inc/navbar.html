@@ -2,6 +2,8 @@
 {% url 'accounts:user_logout' as user_logout_url %}
 {% url 'accounts:user_register' as user_register_url %}
 {% url 'home:home' as home_url %}
+{% url 'orders:cart' as order_cart_url %}
+{% url 'orders:order_list' as order_list_url %}
 
 <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
@@ -15,7 +17,24 @@
                         Home
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a
+                            class="nav-link {% if request.path == order_cart_url %}active{% endif %}"
+                            href="{{ order_cart_url }}"
+                    >
+                        cart
+                    </a>
+                </li>
                 {% if request.user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a
+                                class="nav-link {% if request.path == order_list_url %}active{% endif %}"
+                                href="{{ order_list_url }}"
+                        >
+                            orders
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ user_logout_url }}">
                             Logout

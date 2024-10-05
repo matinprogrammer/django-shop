@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'category.apps.CategoryConfig',
     'orders.apps.OrdersConfig',
+
+    #TODO: help
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

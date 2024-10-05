@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block 'content' %}
+<table class="table table-info table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">count of items</th>
+            <th scope="col">total price</th>
+            <th scope="col">created</th>
+            <th scope="col">Remove</th>
+            <th scope="col">Continue</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+           <th scope="row">{{ forloop.counter }}</th>
+           <th>{{ order.get_items_count }}</th>
+           <th>{{ order.get_total_price }}</th>
+           <th>{{ order.created }}</th>
+           <th><a href="{% url 'orders:order_remove' order.id %}">Remove</a></th>
+           <th><a href="{% url 'orders:order_detail' order.id %}">Continue</a></th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
