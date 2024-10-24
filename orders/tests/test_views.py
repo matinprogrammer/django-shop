@@ -92,7 +92,7 @@ class TestCartRemoveView(TestCase):
     def setUp(self):
         product = baker.make(order_models.Product)
 
-    def test_cart_add_POST(self):
+    def test_cart_remove_POST(self):
         response = self.client.post(reverse('orders:cart_add', args=[1]))
 
         self.assertEqual(response.status_code, 302)
