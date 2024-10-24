@@ -1,5 +1,3 @@
-from distutils.log import fatal
-
 from django.shortcuts import render, redirect
 from django.views import View
 from accounts.forms import UserLoginForm, UserRegisterForm, VerifyCodeForm
@@ -26,13 +24,11 @@ class UserLoginView(View):
         if form.is_valid():
             cd = form.cleaned_data
             user = authenticate(phone_number=cd['phone_number'], password=cd['password'])
-            print(user)
             if user is not None:
                 login(request, user)
                 messages.success(request, 'You are now logged in', 'success')
                 return redirect('home:home')
             messages.error(request, 'Invalid username or password', 'danger')
-
         return render(request, self.template_name, context={
             'form': form,
         })
@@ -58,7 +54,7 @@ class UserRegisterView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             random_code = randint(100000, 999999)
-            # send_otp_code(phone_number=form.cleaned_data['phone_number'], code=random_code)
+            send_otp_code(phone_number=form.cleaned_data['phone_number'], code=random_code)
             OtpCode.objects.create(
                 phone_number=form.cleaned_data['phone_number'],
                 code=random_code,
@@ -109,10 +105,10 @@ class UserRegisterVerifyCodeView(View):
                 login(request, user)
                 messages.success(request, 'Your code has been sent successfully', 'success')
                 return redirect('home:home')
-            messages.error(request, 'Your code have error', 'danger')
-            return render(request, self.template_name, context={
-                'form': self.form_class,
-            })
+        messages.error(request, 'Your code have error', 'danger')
+        return render(request, self.template_name, context={
+            'form': self.form_class,
+        })
 
 
 
