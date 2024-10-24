@@ -1,6 +1,4 @@
 from django.test import TestCase
-from requests import session
-
 from accounts.models import User, OtpCode
 from accounts import views, forms
 from django.urls import reverse
@@ -99,6 +97,7 @@ class UserRegisterView(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'accounts/user_register.html')
         self.failUnless(response.context['form'], forms.UserRegisterForm)
+
 
 class UserRegisterVerifyCodeView(TestCase):
     def setUp(self):
