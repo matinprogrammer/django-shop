@@ -41,7 +41,10 @@ class Cart:
         self.session.modified = True
 
     def get_total_price(self):
-        return sum(int(item['product'].price) * item['quantity'] for item in self.cart.values())
+        try:
+            return sum(int(Product.objects.get(pk=int(product_id)).price) * item['quantity'] for product_id, item in self.cart.items())
+        except Product.DoesNotExist:
+            return -1
 
     def clear(self):
         del self.session[CART_SESSION_KEY]
