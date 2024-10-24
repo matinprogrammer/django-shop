@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block 'content' %}
+    <h3>CheckOut</h3>
+    <table class="table table-info table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Total price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order_items%}
+            <tr>
+               <th scope="row">{{ forloop.counter }}</th>
+               <th>{{ item.product }}</th>
+               <th>{{ item.quantity }}</th>
+               <th>{{ item.product.price|intcomma }}</th>
+               <th>{{ item.get_cost|intcomma }}</th>
+            </tr>
+            {% endfor %}
+            <tr>
+                <th>Total:</th>
+                <th colspan="3"></th>
+                <th>{{ order.get_total_price|intcomma }}</th>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -8,7 +8,12 @@
             <h2>{{ product.name }}</h2>
             <p>{{ product.description }}</p>
             <p>price: {{ product.price }}</p>
-            <a class="btn btn-primary">Buy</a>
+            <form action="{% url 'orders:cart_add' product.id %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
         </div>
 
     </div>
