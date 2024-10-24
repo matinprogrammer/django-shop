@@ -4,7 +4,11 @@
         {% for product in products %}
             <div class="card" style="width: 18rem;">
                 <div class="h-75 d-flex justify-content-center align-items-center">
-                    <img class="card-img-top" src="{{ product.picture.url }}" alt="{{ product.picture }}">
+                    {% if product.picture %}
+                        <img class="card-img-top" src="{{ product.picture.url }}" alt="{{ product.picture }}">
+                    {% else %}
+                        <img class="card-img-top" src="" alt="">
+                    {% endif %}
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
