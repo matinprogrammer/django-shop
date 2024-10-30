@@ -10,6 +10,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 import datetime
 from django.contrib import messages
+import pytz
 
 
 
@@ -85,9 +86,8 @@ class CouponApplyView(LoginRequiredMixin, View):
     form_class = CouponApplyForm
 
     def post(self, request, order_id):
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(tz=pytz.timezone('Asia/Tehran'))
         form = self.form_class(request.POST)
-
         if form.is_valid():
             code = form.cleaned_data['code']
             try:
