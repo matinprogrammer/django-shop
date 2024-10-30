@@ -22,9 +22,10 @@ class Order(models.Model):
 
     def get_total_price(self):
         total = sum(item.get_cost() for item in self.order_items.all())
-        discount = total * self.discount // 100
-        result = total - discount
-        return result
+        if self.discount != 0 and self.discount != None:
+            discount = total * self.discount // 100
+            total = total - discount
+        return total
 
     def get_items_count(self):
         return sum(item.quantity for item in self.order_items.all())
