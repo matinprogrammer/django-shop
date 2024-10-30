@@ -32,6 +32,9 @@ class TestUrls(TestCase):
         url = reverse('orders:order_list')
         self.assertEqual(resolve(url).func.view_class, views.OrderListView)
 
+    def test_apply_coupon_code_url(self):
+        url = reverse('orders:apply_coupon', args=[1])
+        self.assertEqual(resolve(url).func.view_class, views.CouponApplyView)
 
 
 

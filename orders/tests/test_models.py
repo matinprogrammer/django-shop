@@ -1,3 +1,5 @@
+from venv import logger
+
 from django.test import TestCase
 from orders import models as orders_models
 from accounts import models as accounts_models
@@ -21,8 +23,13 @@ class TestOrderModel(TestCase):
     def test_get_total_price(self):
         self.assertEqual(self.order.get_total_price(), 80)
 
+    def test_get_total_price_with_discount(self):
+        self.order.discount=50
+        self.assertEqual(self.order.get_total_price(), 40)
+
     def test_get_items_count(self):
         self.assertEqual(self.order.get_items_count(), 6)
+
 
 class TestOrderItemModel(TestCase):
     def setUp(self):
@@ -34,6 +41,14 @@ class TestOrderItemModel(TestCase):
 
     def test_get_cost(self):
         self.assertEqual(self.order_item.get_cost(), 60)
+
+
+class TestCouponModel(TestCase):
+    def setUp(self):
+        self.coupon = baker.make(orders_models.Coupon, code=123456)
+
+    def test_model_str(self):
+        self.assertEqual(str(self.coupon), '123456')
 
 
 
