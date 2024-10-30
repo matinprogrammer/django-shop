@@ -29,4 +29,12 @@
             </tr>
         </tbody>
     </table>
+    <form action="{% url 'orders:apply_coupon' order.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if order.discount %}
+            <p>Discount: {{ order.discount }}</p>
+        {% endif %}
+        <input type="submit" value="Apply">
+    </form>
 {% endblock %}

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from category.models import Product
+from django.core.validators import MinValueValidator, MaxValueValidator
+import logging
 
 
 User = get_user_model()
@@ -20,7 +22,9 @@ class Order(models.Model):
 
     def get_total_price(self):
         total = sum(item.get_cost() for item in self.order_items.all())
-        return total
+        discount = total * self.discount // 100
+        result = total - discount
+        return result
 
     def get_items_count(self):
         return sum(item.quantity for item in self.order_items.all())
@@ -36,3 +40,14 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - {self.quantity}"
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=30, unique=True)
+    valid_from = models.DateTimeField()
+    valid_to = models.DateTimeField()
+    discount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(90)])
+    active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.code
+
