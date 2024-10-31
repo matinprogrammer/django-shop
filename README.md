@@ -14,6 +14,7 @@ A demo shop can be tried here: [django-shop](https://shop.matinahmadi.ir/demo).
 ## What Django tools and features does the shop use?
 *Django CBV
 *Django management
+*override django user
 
 
 ## urls
@@ -36,3 +37,27 @@ A demo shop can be tried here: [django-shop](https://shop.matinahmadi.ir/demo).
 * /delete/&gt;int:order_id&lt;/ delete order
 * /create/ create order
 * /apply/&gt;int:order_id&lt;/ apply coupon on order
+
+## history
+
+1.0.0
+-------------------
+* full account register, login, logout
+* simple category and post 
+* use sqllite
+
+2.0.0 probebly in 2024/Nov/30, 1403/aban/30
+-------------------
+* nested category
+* inheritance post category
+* use postgresql
+* use ArvanCloud for media files
+* multi cart
+
+3.0.0 probebly in 2025/Jan/30, 1403/dey/30
+-------------------
+* use celery and rabbitmq for async process
+* use redis catch
+* create docker file
+
+
