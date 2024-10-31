@@ -28,11 +28,11 @@ A demo shop can be tried here: [django-shop](https://shop.matinahmadi.ir/demo).
 * /product/&gt;slug:slug&lt;/ show product detail
 
 **cart and order** in /orders/
-//
-/cart/
-/cart/add/&gt;int:product_id&lt;/
-/cart/remove/&gt;int:product_id&lt;/
-/detail/&gt;int:order_id&lt;/
-/delete/&gt;int:order_id&lt;/
-/create/
-/apply/&gt;int:order_id&lt;/
+* // list of order
+* /cart/ show cart detail
+* /cart/add/&gt;int:product_id&lt;/ and product in cart (if you click on 'add to cart' in product detail send to this page)
+* /cart/remove/&gt;int:product_id&lt;/ remove cart
+* /detail/&gt;int:order_id&lt;/ detail of order
+* /delete/&gt;int:order_id&lt;/ delete order
+* /create/ create order
+* /apply/&gt;int:order_id&lt;/ apply coupon on order
