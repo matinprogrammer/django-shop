@@ -52,7 +52,6 @@ A demo shop can be tried here: [django-shop](https://shop.matinahmadi.ir/demo).
 * inheritance post category
 * use postgresql
 * use ArvanCloud for media files
-* multi cart
 
 **3.0.0 probebly in 2025/Jan/30, 1403/dey/30**
 
