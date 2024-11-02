@@ -12,9 +12,9 @@ this is a sample of shop that created by django that can help you to learn about
 A demo shop can be tried here: [django-shop](https://shop.matinahmadi.ir/demo).
 
 ## What Django tools and features does the shop use?
-*Django CBV
-*Django management
-*override django user
+* Django CBV
+* Django management
+* override django user
 
 
 ## urls
