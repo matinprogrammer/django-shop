@@ -46,14 +46,14 @@ A demo shop can be tried here: [django-shop](https://shop.matinahmadi.ir/demo).
 * simple category and post 
 * use sqllite
 
-**2.0.0 probebly in 2024/Nov/30, 1403/aban/30**
+**2.0.0 in the furure**
 
 * nested category
 * inheritance post category
 * use postgresql
 * use ArvanCloud for media files
 
-**3.0.0 probebly in 2025/Jan/30, 1403/dey/30**
+**3.0.0 in the furure**
 
 * use celery and rabbitmq for async process
 * use redis catch
